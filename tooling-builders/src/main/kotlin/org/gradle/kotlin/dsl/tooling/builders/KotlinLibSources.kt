@@ -81,9 +81,11 @@ fun kotlinLibSourcesFor(scriptHandlers: List<ScriptHandler>): ClassPath =
         .map { resolveKotlinLibSourcesUsing(it.dependencies) }
         .find { !it.isEmpty } ?: ClassPath.EMPTY
 
+
 private
 fun resolveKotlinLibSourcesUsing(dependencyHandler: DependencyHandler): ClassPath =
     resolveSourcesUsing(dependencyHandler, kotlinComponentIdentifiers)
+
 
 private
 fun resolveSourcesUsing(dependencyHandler: DependencyHandler, components: List<ComponentIdentifier>): ClassPath =
