@@ -11,7 +11,17 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun use_TextUtils_in_unit_test() {
+        assertFalse(android.text.TextUtils.isEmpty(
+            "this string is not empty, but TextUtils.isEmpty always returns false because of mocked Android.jar"
+        ))
+    }
+
+    @Test
+    fun use_JSONObjects_in_unit_test() {
+        val json = org.json.JSONObject();
+        json.put("foo", "bar")
+        // We expect that getString will return null, because we use mocked Android.jar instead of real JSONObject
+        assertNull(json.getString("foo"))
     }
 }
